@@ -58,3 +58,21 @@ if __name__ == "__main__":
             sys.exit()
 
         print(f"HOST: {HOST}\nSTART {START}\n END {END}\nTIMEOUT")
+        
+        print("~"*60)
+
+        now = datetime.now()
+
+        print(f"[+] Starting scanning at {str(now).split(' ')[1].split('.')[0]}")
+
+        for i in range(START, END + 1):
+            check_port(HOST, i, TIMEOUT)
+
+        now2 = datetime.now()
+
+        print(f"[-] Finished scanning in {str(now2-now)}")
+
+    else:
+        print("[-] Could not resolve specified hostname...")
+    except IndexError:
+        pass
